@@ -41,7 +41,7 @@ namespace OWML.CrouchMod
                 _crouchStartTime = Time.realtimeSinceStartup;
             }
             else if (ModHelper.Input.WasNewlyReleased(_crouchCombo) &&
-                     !OWInput.IsHeld(InputLibrary.jump))
+                     !OWInput.IsPressed(InputLibrary.jump))
             {
                 _crouchStartTime = null;
                 _playerCharacterController.SetValue("_jumpChargeTime", 0);
