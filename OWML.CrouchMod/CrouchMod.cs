@@ -1,5 +1,4 @@
-﻿using System;
-using OWML.Common;
+﻿using OWML.Common;
 using OWML.ModHelper;
 using OWML.ModHelper.Events;
 using UnityEngine;
@@ -9,7 +8,7 @@ namespace OWML.CrouchMod
     public class CrouchMod : ModBehaviour
     {
         private PlayerCharacterController _playerCharacterController;
-        private DateTime? _crouchStartTime;
+        private float? _crouchStartTime;
 
         private IModInputCombination _crouchCombo;
 
@@ -39,15 +38,15 @@ namespace OWML.CrouchMod
         {
             if (ModHelper.Input.IsNewlyPressed(_crouchCombo))
             {
-                _crouchStartTime = DateTime.Now;
+                _crouchStartTime = Time.realtimeSinceStartup;
             }
             else if (ModHelper.Input.WasNewlyReleased(_crouchCombo) &&
-                     !Input.GetKey(KeyCode.Space))
+                     !OWInput.IsHeld(InputLibrary.jump))
             {
                 _crouchStartTime = null;
                 _playerCharacterController.SetValue("_jumpChargeTime", 0);
             }
-            else if (Input.GetKeyUp(KeyCode.Space))
+            else if (OWInput.IsNewlyReleased(InputLibrary.jump))
             {
                 _crouchStartTime = null;
             }
@@ -59,7 +58,7 @@ namespace OWML.CrouchMod
             {
                 return;
             }
-            var jumpChargeTime = (float)(DateTime.Now - _crouchStartTime.Value).TotalSeconds;
+            var jumpChargeTime = Time.realtimeSinceStartup - _crouchStartTime.Value;
             _playerCharacterController.SetValue("_jumpChargeTime", jumpChargeTime);
         }
 
