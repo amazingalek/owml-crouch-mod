@@ -7,16 +7,22 @@ namespace OWML.CrouchMod
 {
     public class CrouchMod : ModBehaviour
     {
-        private const string Combination = "C";
-
         private PlayerCharacterController _playerCharacterController;
         private float? _crouchStartTime;
         private IModInputCombination _crouchCombo;
 
+        public override void Configure(IModConfig config)
+        {
+            if (_crouchCombo != null)
+            {
+                ModHelper.Input.UnregisterCombination(_crouchCombo);
+            }
+            var combination = config.GetSettingsValue<string>("Crouch combination");
+            _crouchCombo = ModHelper.Input.RegisterCombination(this, "Crouch", combination);
+        }
+
         private void Start()
         {
-            _crouchCombo = ModHelper.Input.RegisterCombination(this, "Crouch", Combination);
-
             ModHelper.Events.Player.OnPlayerAwake += OnPlayerAwake;
         }
 

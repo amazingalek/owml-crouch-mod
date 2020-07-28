@@ -1,0 +1,9 @@
+{
+  "enabled": true,
+  "settings": {
+    "Crouch combination": {
+      "type": "input",
+      "value": "C"
+    }
+  }
+}
