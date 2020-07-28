@@ -36,7 +36,7 @@ namespace OWML.CrouchMod
 
         private void HandleInput()
         {
-            if (ModHelper.Input.IsNewlyPressed(_crouchCombo))
+            if (ModHelper.Input.IsNewlyPressedExact(_crouchCombo))
             {
                 _crouchStartTime = Time.realtimeSinceStartup;
             }
