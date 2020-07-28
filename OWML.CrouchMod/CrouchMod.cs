@@ -11,7 +11,6 @@ namespace OWML.CrouchMod
 
         private PlayerCharacterController _playerCharacterController;
         private float? _crouchStartTime;
-
         private IModInputCombination _crouchCombo;
 
         private void Start()
