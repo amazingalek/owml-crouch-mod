@@ -1,5 +1,9 @@
 # CrouchMod
 
-Hold C to crouch. Combines well with jumping.
+Enables crouching in Outer Wilds, independently of jumping.
 
-Compatible with [QSB](https://github.com/Raicuparta/quantum-space-buddies).
+Hold the crouch button (default: C) to crouch. The crouching button is configurable.
+
+Crouching combines well with jumping - you can jump directly out of crouching.
+
+Compatible with [Quantum Space Buddies](https://github.com/Raicuparta/quantum-space-buddies).
